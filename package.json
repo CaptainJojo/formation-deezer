@@ -1,0 +1,23 @@
+{
+  "name": "formation-deezer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:CaptainJojo/formation-deezer.git",
+  "author": "Jonathan Jalouzot <jonathan.jalouzot@gmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "compile": "tsc",
+    "start": "npm run compile && node ./dist/index.js",
+    "dev-server": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"node ./dist/index.js\""
+  },
+  "dependencies": {
+    "@apollo/server": "^4.8.1",
+    "graphql": "^16.7.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.5",
+    "tsc-watch": "^6.0.4",
+    "typescript": "^5.1.6"
+  }
+}
