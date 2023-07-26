@@ -1,12 +1,5 @@
-export const musics = async () => {
-  return [
-    {
-      title: "The Awakening",
-      author: "Kate Chopin",
-    },
-    {
-      title: "City of Glass",
-      author: "Paul Auster",
-    },
-  ];
+export const musics = async (_, __, { datasources }) => {
+  const musics = await datasources.music.getMusics();
+
+  return musics;
 };
