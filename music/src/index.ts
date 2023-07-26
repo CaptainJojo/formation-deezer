@@ -5,14 +5,18 @@ import { resolvers } from "./resolvers";
 import { createPostgresClient } from "./config/db";
 import { MusicDatasource } from "./datasources/MusicDatasource";
 import sqlPlugin from "./plugins/sqlPlugin";
+import { buildSubgraphSchema } from "@apollo/subgraph";
 
 async function startApolloServer() {
   const knex = createPostgresClient();
 
   const server = new ApolloServer({
-    typeDefs: await loadFiles("./src/typeDefs/**/*.graphql"),
-    resolvers,
+    schema: buildSubgraphSchema({
+      typeDefs: await loadFiles("./src/typeDefs/**/*.graphql"),
+      resolvers,
+    }),
     plugins: [sqlPlugin()],
+    introspection: true,
   });
 
   const { url } = await startStandaloneServer(server, {
