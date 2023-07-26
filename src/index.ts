@@ -10,6 +10,7 @@ import { FavoritesArtistDatasource } from "./datasources/FavoritesArtistDatasour
 import { PlaylistDatasource } from "./datasources/PlaylistDatasource";
 import { PlaylistMusicDatasource } from "./datasources/PlaylistMusicDatasource";
 import { MusicDatasource } from "./datasources/MusicDatasource";
+import sqlPlugin from "./plugins/sqlPlugin";
 
 async function startApolloServer() {
   const knex = createPostgresClient();
@@ -17,6 +18,7 @@ async function startApolloServer() {
   const server = new ApolloServer({
     typeDefs: await loadFiles("./src/typeDefs/**/*.graphql"),
     resolvers,
+    plugins: [sqlPlugin()],
   });
 
   const { url } = await startStandaloneServer(server, {
