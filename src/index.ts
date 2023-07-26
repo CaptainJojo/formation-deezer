@@ -1,39 +1,19 @@
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
+import { loadFiles } from "@graphql-tools/load-files";
+import { resolvers } from "./resolvers";
 
-const typeDefs = `
-  type Music {
-    title: String
-    author: String
-  }
+async function startApolloServer() {
+  const server = new ApolloServer({
+    typeDefs: await loadFiles("./src/typeDefs/**/*.graphql"),
+    resolvers,
+  });
 
-  type Query {
-    musics: [Music]
-  }
-`;
+  const { url } = await startStandaloneServer(server, {
+    listen: { port: 4000 },
+  });
 
-const musics = [
-  {
-    title: "The Awakening",
-    author: "Kate Chopin",
-  },
-  {
-    title: "City of Glass",
-    author: "Paul Auster",
-  },
-];
+  console.log(`🚀 Server listening at: ${url}`);
+}
 
-const resolvers = {
-  Query: {
-    musics: () => musics,
-  },
-};
-
-const server = new ApolloServer({
-  typeDefs,
-  resolvers,
-});
-
-const { url } = await startStandaloneServer(server, { listen: { port: 4000 } });
-
-console.log(`🚀 Server listening at: ${url}`);
+startApolloServer();

@@ -5,7 +5,6 @@
   "repository": "git@github.com:CaptainJojo/formation-deezer.git",
   "author": "Jonathan Jalouzot <jonathan.jalouzot@gmail.com>",
   "license": "MIT",
-  "type": "module",
   "scripts": {
     "compile": "tsc",
     "start": "npm run compile && node ./dist/index.js",
@@ -13,6 +12,7 @@
   },
   "dependencies": {
     "@apollo/server": "^4.8.1",
+    "@graphql-tools/load-files": "^7.0.0",
     "graphql": "^16.7.1"
   },
   "devDependencies": {
