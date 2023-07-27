@@ -1,3 +1,4 @@
+import Dataloader from "dataloader";
 export class PlaylistDatasource {
   private dbConnection: any;
 
@@ -5,7 +6,13 @@ export class PlaylistDatasource {
     this.dbConnection = dbConnection;
   }
 
+  private batchPlaylists = new Dataloader(async (ids) => {
+    const playlists = await this.dbConnection("playlist").whereIn("id", ids);
+
+    return ids.map((id) => playlists.find((playlist) => playlist.id === id));
+  });
+
   async getPlaylistById({ id }) {
-    return await this.dbConnection("playlist").where({ id }).first();
+    return this.batchPlaylists.load(id);
   }
 }

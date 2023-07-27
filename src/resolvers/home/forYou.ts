@@ -3,7 +3,7 @@ export const forYou = async (_, __, { datasources, userId }) => {
 
   return Promise.all(
     forYou.map(async (forYou) => {
-      return await datasources.playlist.getPlaylistById({
+      return datasources.playlist.getPlaylistById({
         id: forYou.playlist_id,
       });
     })

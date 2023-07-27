@@ -4,7 +4,7 @@ export const myFavoritesArtist = async (_, __, { datasources, userId }) => {
 
   return Promise.all(
     myFavoritesArtist.map(async (favoriteArtist) => {
-      return await datasources.artist.getArtistById({
+      return datasources.artist.getArtistById({
         id: favoriteArtist.artist_id,
       });
     })

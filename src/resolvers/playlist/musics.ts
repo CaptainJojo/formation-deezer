@@ -5,7 +5,7 @@ export const musics = async (parent, _, { datasources }) => {
 
   return Promise.all(
     musics.map(async (music) => {
-      return await datasources.music.getMusicById({
+      return datasources.music.getMusicById({
         id: music.music_id,
       });
     })
