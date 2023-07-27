@@ -2,3 +2,18 @@ type Music {
   title: String
   artist: Artist!
 }
+
+type MusicConnection {
+  edges: [MusicEdge]
+  pageInfo: PageInfo!
+}
+
+type MusicEdge {
+  cursor: String!
+  node: Music!
+}
+
+type PageInfo {
+  endCursor: String
+  hasNextPage: Boolean!
+}
