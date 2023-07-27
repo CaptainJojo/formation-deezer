@@ -4,6 +4,7 @@ import { loadFiles } from "@graphql-tools/load-files";
 import { resolvers } from "./resolvers";
 import { createPostgresClient } from "./config/db";
 import { ArtistDatasource } from "./datasources/ArtistDatasource";
+import { FanDatasource } from "./datasources/FanDatasource";
 
 async function startApolloServer() {
   const knex = createPostgresClient();
@@ -18,6 +19,7 @@ async function startApolloServer() {
     context: async ({ req }) => ({
       datasources: {
         artist: new ArtistDatasource(knex),
+        fan: new FanDatasource(knex),
       },
     }),
   });
