@@ -11,3 +11,15 @@ type ArtistNotFound {
 }
 
 union ArtistResult = Artist | ArtistNotFound
+
+union AddFavoriteArtistResult =
+    AddFavoriteArtistSuccess
+  | AddFavoriteArtistError
+
+type AddFavoriteArtistSuccess {
+  message: String!
+}
+
+type AddFavoriteArtistError {
+  message: String!
+}

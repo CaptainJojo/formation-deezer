@@ -21,4 +21,12 @@ export class FavoritesArtistDatasource {
   async getFavoritesArtist({ userId }) {
     return this.batchFavoritesArtist.load(userId);
   }
+
+  async addFavoriteArtist({ artistId, userId }) {
+    return await this.dbConnection("favorites_artist").insert({
+      id: Math.floor(Math.random() * 1000000),
+      artist_id: artistId,
+      user_id: userId,
+    });
+  }
 }
