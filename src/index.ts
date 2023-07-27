@@ -3,7 +3,7 @@ import { startStandaloneServer } from "@apollo/server/standalone";
 import { loadFiles } from "@graphql-tools/load-files";
 import { resolvers } from "./resolvers";
 import { createPostgresClient } from "./config/db";
-import { MusicDatasource } from "./datasources/MusicDatasource";
+import { ArtistDatasource } from "./datasources/ArtistDatasource";
 
 async function startApolloServer() {
   const knex = createPostgresClient();
@@ -17,7 +17,7 @@ async function startApolloServer() {
     listen: { port: 4000 },
     context: async ({ req }) => ({
       datasources: {
-        music: new MusicDatasource(knex),
+        artist: new ArtistDatasource(knex),
       },
     }),
   });
