@@ -8,7 +8,9 @@ CREATE TABLE "public"."artist" (
 ) WITH (oids = false);
 
 INSERT INTO "artist" ("id", "name") VALUES
-(1,	'name');
+(1,	'name'),
+(2,	'artist 2'),
+(3,	'artist 3');
 
 DROP TABLE IF EXISTS "fan";
 CREATE TABLE "public"."fan" (
@@ -28,7 +30,9 @@ CREATE TABLE "public"."favorites_artist" (
 ) WITH (oids = false);
 
 INSERT INTO "favorites_artist" ("id", "user_id", "artist_id") VALUES
-(1,	1,	1);
+(1,	1,	1),
+(2,	1,	2),
+(3,	1,	3);
 
 DROP TABLE IF EXISTS "for_you";
 CREATE TABLE "public"."for_you" (
@@ -38,7 +42,9 @@ CREATE TABLE "public"."for_you" (
 ) WITH (oids = false);
 
 INSERT INTO "for_you" ("id", "playlist_id", "user_id") VALUES
-(1,	1,	1);
+(1,	1,	1),
+(2,	2,	1),
+(3,	3,	1);
 
 DROP TABLE IF EXISTS "music";
 CREATE TABLE "public"."music" (
@@ -48,7 +54,9 @@ CREATE TABLE "public"."music" (
 ) WITH (oids = false);
 
 INSERT INTO "music" ("id", "title", "artist_id") VALUES
-(1,	'music 1',	1);
+(1,	'music 1',	1),
+(2,	'music',	2),
+(3,	'music',	3);
 
 DROP TABLE IF EXISTS "playlist";
 CREATE TABLE "public"."playlist" (
@@ -57,7 +65,9 @@ CREATE TABLE "public"."playlist" (
 ) WITH (oids = false);
 
 INSERT INTO "playlist" ("id", "name") VALUES
-(1,	'playlist 1');
+(1,	'playlist 1'),
+(2,	'playlist 2'),
+(3,	'playlist 3');
 
 DROP TABLE IF EXISTS "playlist_music";
 CREATE TABLE "public"."playlist_music" (
@@ -67,6 +77,8 @@ CREATE TABLE "public"."playlist_music" (
 ) WITH (oids = false);
 
 INSERT INTO "playlist_music" ("id", "playlist_id", "music_id") VALUES
-(1,	1,	1);
+(1,	1,	1),
+(2,	2,	2),
+(3,	3,	3);
 
--- 2023-07-27 12:31:59.386369+00
+-- 2023-07-27 13:06:18.512841+00
