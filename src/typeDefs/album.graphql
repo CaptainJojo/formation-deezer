@@ -1,0 +1,6 @@
+type Album {
+  id: ID!
+  title: String!
+  artist: Artist!
+  musics: [Music!]!
+}

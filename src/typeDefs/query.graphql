@@ -1,3 +1,4 @@
 extend type Query {
   home: Home
+  artist(id: ID!): ArtistResult
 }
