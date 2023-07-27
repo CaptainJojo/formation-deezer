@@ -1,0 +1,72 @@
+-- Adminer 4.8.1 PostgreSQL 14.8 (Debian 14.8-1.pgdg120+1) dump
+
+DROP TABLE IF EXISTS "artist";
+CREATE TABLE "public"."artist" (
+    "id" integer NOT NULL,
+    "name" text,
+    CONSTRAINT "artist_pkey" PRIMARY KEY ("id")
+) WITH (oids = false);
+
+INSERT INTO "artist" ("id", "name") VALUES
+(1,	'name');
+
+DROP TABLE IF EXISTS "fan";
+CREATE TABLE "public"."fan" (
+    "id" integer NOT NULL,
+    "artist_id" integer NOT NULL,
+    "fans" integer NOT NULL
+) WITH (oids = false);
+
+INSERT INTO "fan" ("id", "artist_id", "fans") VALUES
+(1,	1,	10000);
+
+DROP TABLE IF EXISTS "favorites_artist";
+CREATE TABLE "public"."favorites_artist" (
+    "id" integer NOT NULL,
+    "user_id" integer NOT NULL,
+    "artist_id" integer NOT NULL
+) WITH (oids = false);
+
+INSERT INTO "favorites_artist" ("id", "user_id", "artist_id") VALUES
+(1,	1,	1);
+
+DROP TABLE IF EXISTS "for_you";
+CREATE TABLE "public"."for_you" (
+    "id" integer NOT NULL,
+    "playlist_id" integer NOT NULL,
+    "user_id" integer NOT NULL
+) WITH (oids = false);
+
+INSERT INTO "for_you" ("id", "playlist_id", "user_id") VALUES
+(1,	1,	1);
+
+DROP TABLE IF EXISTS "music";
+CREATE TABLE "public"."music" (
+    "id" integer NOT NULL,
+    "title" text NOT NULL,
+    "artist_id" integer NOT NULL
+) WITH (oids = false);
+
+INSERT INTO "music" ("id", "title", "artist_id") VALUES
+(1,	'music 1',	1);
+
+DROP TABLE IF EXISTS "playlist";
+CREATE TABLE "public"."playlist" (
+    "id" integer NOT NULL,
+    "name" text NOT NULL
+) WITH (oids = false);
+
+INSERT INTO "playlist" ("id", "name") VALUES
+(1,	'playlist 1');
+
+DROP TABLE IF EXISTS "playlist_music";
+CREATE TABLE "public"."playlist_music" (
+    "id" integer NOT NULL,
+    "playlist_id" integer NOT NULL,
+    "music_id" integer NOT NULL
+) WITH (oids = false);
+
+INSERT INTO "playlist_music" ("id", "playlist_id", "music_id") VALUES
+(1,	1,	1);
+
+-- 2023-07-27 12:31:59.386369+00
