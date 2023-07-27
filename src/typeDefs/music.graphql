@@ -1,4 +1,4 @@
 type Music {
   title: String
-  author: String
+  artist: Artist!
 }

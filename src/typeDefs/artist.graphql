@@ -1,0 +1,5 @@
+type Artist {
+  id: ID!
+  name: String!
+  fans: Int!
+}

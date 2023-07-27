@@ -1,3 +1,3 @@
-type Query {
-  musics: [Music]
+extend type Query {
+  home: Home
 }
