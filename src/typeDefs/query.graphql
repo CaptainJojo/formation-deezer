@@ -1,6 +1,6 @@
 type Query {
   home: Home
   artist(id: ID!): ArtistResult
-
   musics(first: Int!, after: String): MusicConnection!
+  albums(first: Int!, after: String): AlbumConnection!
 }
