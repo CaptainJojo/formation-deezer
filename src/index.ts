@@ -11,6 +11,7 @@ import { PlaylistDatasource } from "./datasources/PlaylistDatasource";
 import { PlaylistMusicDatasource } from "./datasources/PlaylistMusicDatasource";
 import { MusicDatasource } from "./datasources/MusicDatasource";
 import sqlPlugin from "./plugins/sqlPlugin";
+import { AlbumDatasource } from "./datasources/AlbumDatasource";
 
 async function startApolloServer() {
   const knex = createPostgresClient();
@@ -34,6 +35,7 @@ async function startApolloServer() {
           playlist: new PlaylistDatasource(knex),
           playlistMusic: new PlaylistMusicDatasource(knex),
           music: new MusicDatasource(knex),
+          album: new AlbumDatasource(knex),
         },
       };
     },

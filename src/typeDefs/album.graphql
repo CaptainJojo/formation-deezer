@@ -4,3 +4,13 @@ type Album {
   artist: Artist!
   musics: [Music!]!
 }
+
+type AlbumConnection {
+  edges: [AlbumEdge!]!
+  pageInfo: PageInfo!
+}
+
+type AlbumEdge {
+  cursor: String!
+  node: Album!
+}

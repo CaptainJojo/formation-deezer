@@ -30,4 +30,19 @@ export class MusicDatasource {
 
     return musics.rows;
   }
+
+  private batchMusicsByAlbum = new Dataloader(async (albumIds) => {
+    const musics = await this.dbConnection("music").whereIn(
+      "album_id",
+      albumIds
+    );
+
+    return albumIds.map((albumId) =>
+      musics.filter((music) => music.album_id === albumId)
+    );
+  });
+
+  async getMusicsByAlbum({ albumId }) {
+    return this.batchMusicsByAlbum.load(albumId);
+  }
 }
