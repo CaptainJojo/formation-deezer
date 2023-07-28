@@ -13,16 +13,18 @@ import { MusicDatasource } from "./datasources/MusicDatasource";
 import sqlPlugin from "./plugins/sqlPlugin";
 import { AlbumDatasource } from "./datasources/AlbumDatasource";
 import Keyv from "keyv";
-import { KeyvAdapter } from "@apollo/utils.keyvadapter";
+import redisPlugin from "./plugins/redisPlugin";
+import { MyKeyvAdapter } from "./cache/MyKeyvAdapter";
 
 async function startApolloServer() {
   const knex = createPostgresClient();
 
-  const cache = new KeyvAdapter(new Keyv("redis://localhost:6382"));
+  const cache = new MyKeyvAdapter(new Keyv("redis://localhost:6382"));
   const server = new ApolloServer({
     typeDefs: await loadFiles("./src/typeDefs/**/*.graphql"),
     resolvers,
-    plugins: [sqlPlugin()],
+    // @ts-ignore
+    plugins: [sqlPlugin(), redisPlugin],
     cache,
   });
 
