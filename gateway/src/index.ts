@@ -9,6 +9,7 @@ async function startApolloServer() {
       subgraphs: [
         { name: "musics", url: "http://localhost:4000/graphql" },
         { name: "authors", url: "http://localhost:4001/graphql" },
+        { name: "playlist", url: "http://localhost:4004/graphql" },
       ],
     }),
   });

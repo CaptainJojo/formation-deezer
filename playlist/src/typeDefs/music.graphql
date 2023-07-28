@@ -1,0 +1,8 @@
+type Playlist {
+  name: String
+  musics: [Music]
+}
+
+type Music @key(fields: "id", resolvable: false) {
+  id: ID!
+}

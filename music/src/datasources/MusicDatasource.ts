@@ -8,4 +8,11 @@ export class MusicDatasource {
   async getMusics() {
     return await this.dbConnection("music").select("*");
   }
+
+  async getMusicById(musicId) {
+    return await this.dbConnection("music")
+      .select("*")
+      .where("id", musicId)
+      .first();
+  }
 }

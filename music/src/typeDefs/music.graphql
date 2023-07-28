@@ -1,4 +1,5 @@
-type Music {
+type Music @key(fields: "id") {
+  id: ID!
   title: String
   author: Author
 }
