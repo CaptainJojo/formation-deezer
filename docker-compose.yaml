@@ -16,3 +16,9 @@ services:
     restart: always
     ports:
       - 8080:8080
+
+  redis:
+    image: redis:6.2.6
+    restart: always
+    ports:
+      - 6382:6379

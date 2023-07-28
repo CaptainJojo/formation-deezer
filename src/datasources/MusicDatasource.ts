@@ -2,9 +2,11 @@ import Dataloader from "dataloader";
 
 export class MusicDatasource {
   private dbConnection: any;
+  private cache: any;
 
-  constructor(dbConnection) {
+  constructor(dbConnection, cache) {
     this.dbConnection = dbConnection;
+    this.cache = cache;
   }
 
   private batchMusics = new Dataloader(async (ids) => {
@@ -43,6 +45,19 @@ export class MusicDatasource {
   });
 
   async getMusicsByAlbum({ albumId }) {
-    return this.batchMusicsByAlbum.load(albumId);
+    if (this.cache) {
+      const cachedMusics = await this.cache.get(`musics-${albumId}`);
+      if (cachedMusics) {
+        return cachedMusics;
+      }
+    }
+
+    const musicAlbums = await this.batchMusicsByAlbum.load(albumId);
+
+    if (this.cache) {
+      this.cache.set(`musics-${albumId}`, musicAlbums, { ttl: 60 });
+    }
+
+    return musicAlbums;
   }
 }
