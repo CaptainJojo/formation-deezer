@@ -15,6 +15,7 @@ import { AlbumDatasource } from "./datasources/AlbumDatasource";
 import Keyv from "keyv";
 import redisPlugin from "./plugins/redisPlugin";
 import { MyKeyvAdapter } from "./cache/MyKeyvAdapter";
+import instrospection from "./plugins/instrospection";
 
 async function startApolloServer() {
   const knex = createPostgresClient();
@@ -24,7 +25,7 @@ async function startApolloServer() {
     typeDefs: await loadFiles("./src/typeDefs/**/*.graphql"),
     resolvers,
     // @ts-ignore
-    plugins: [sqlPlugin(), redisPlugin],
+    plugins: [sqlPlugin(), redisPlugin, instrospection],
     cache,
   });
 
