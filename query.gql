@@ -1,0 +1,17 @@
+query Albums($first: Int!) {
+  albums(first: $first) {
+    edges {
+      cursor
+      node {
+        id
+        title
+        artist {
+          id
+        }
+        musics {
+          title
+        }
+      }
+    }
+  }
+}
