@@ -7,7 +7,7 @@ export const createPostgresClient = () => {
       client: "pg",
       connection: {
         host: "localhost",
-        port: 5445,
+        port: 5435,
         user: "postgres",
         password: "postgres",
         database: "deezer",

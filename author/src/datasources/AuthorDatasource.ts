@@ -6,6 +6,10 @@ export class AuthorDatasource {
   }
 
   async getAuthors() {
-    return await this.dbConnection("author").select("*");
+    return await this.dbConnection("artist").select("*");
+  }
+
+  async getAuthorById(id) {
+    return await this.dbConnection("artist").select("*").where({  id }).first();
   }
 }

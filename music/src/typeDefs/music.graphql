@@ -1,4 +1,8 @@
 type Music {
   title: String
-  author: String
+  author: Author
+}
+
+type Author @key(fields: "id", resolvable: false) {
+  id: ID!
 }
